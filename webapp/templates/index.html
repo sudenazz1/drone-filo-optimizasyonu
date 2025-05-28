@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Drone Filo Simülasyonu</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Drone Filo Optimizasyonu</h1>
+  <button onclick="runSimulation()">Simülasyonu Başlat</button>
+  <pre id="output"></pre>
+
+  <script>
+    function runSimulation() {
+      fetch("/run")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+        });
+    }
+  </script>
+</body>
+</html>
