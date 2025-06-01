@@ -188,7 +188,7 @@ def compare_scenarios(results):
         print(f"     Fark: {efficiency_2 - efficiency_1:.2f}")
 
 def main():
-    print("🚁 DRONE FİLO OPTİMİZASYON PROJESİ - FİNAL VERSİYON")
+    print("🚁 DRONE FİLO OPTİMİZASYON PROJESİ")
     print("="*60)
     
     results = []
