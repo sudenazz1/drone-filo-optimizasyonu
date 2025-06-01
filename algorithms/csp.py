@@ -20,3 +20,17 @@ class CSP:
                             drone.complete_delivery()
                             drone.add_to_route(delivery.id)
                             break
+class CSPSolver:
+    def solve(self, drones, deliveries, no_fly_zones):
+        assignments = {}
+        delivery_index = 0
+
+        for drone in drones:
+            drone_deliveries = []
+            for _ in range(len(deliveries) // len(drones)):
+                if delivery_index < len(deliveries):
+                    drone_deliveries.append(deliveries[delivery_index])
+                    delivery_index += 1
+            assignments[drone.id] = drone_deliveries
+
+        return assignments

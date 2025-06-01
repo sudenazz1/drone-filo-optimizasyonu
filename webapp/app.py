@@ -1,46 +1,54 @@
-from flask import Flask, render_template, jsonify
+import sys
+import os
+# Ana proje klasörünü Python path'ine ekle
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from flask import Flask, render_template, jsonify, request
 from utils.data_generator import DataGenerator
 from algorithms.csp import CSP
-from models.drone import Drone
-from models.delivery_point import DeliveryPoint
-from models.no_fly_zone import NoFlyZone
+from algorithms.a_star import AStar
+from algorithms.genetic import GeneticAlgorithm
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
-@app.route("/run")
-def run_simulation():
-    drones = DataGenerator.generate_drones(3)
-    deliveries = DataGenerator.generate_delivery_points(10)
-    no_fly_zones = DataGenerator.generate_no_fly_zones(2)
+@app.route('/api/generate_scenario', methods=['POST'])
+def generate_scenario():
+    try:
+        data = request.get_json()
+        num_drones = data.get('drones', 5)
+        num_deliveries = data.get('deliveries', 20)
+        num_no_fly_zones = data.get('no_fly_zones', 2)
+        
+        drones = DataGenerator.generate_drones(num_drones)
+        deliveries = DataGenerator.generate_delivery_points(num_deliveries)
+        no_fly_zones = DataGenerator.generate_no_fly_zones(num_no_fly_zones)
+        
+        return jsonify({
+            'success': True,
+            'drones': [{'id': d.id, 'pos': d.start_pos, 'battery': d.battery} for d in drones],
+            'deliveries': [{'id': d.id, 'pos': d.pos, 'priority': d.priority} for d in deliveries],
+            'no_fly_zones': [{'id': nfz.id, 'coordinates': nfz.coordinates} for nfz in no_fly_zones]
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
-    planner = CSP(drones, deliveries)
-    planner.assign_deliveries()
+@app.route('/api/optimize', methods=['POST'])
+def optimize_routes():
+    try:
+        data = request.get_json()
+        # Optimizasyon kodunu buraya ekleyin
+        return jsonify({
+            'success': True,
+            'message': 'Optimizasyon tamamlandı'
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
-    results = {
-        "drones": [
-            {
-                "id": d.id,
-                "route": [dp for dp in d.current_route],
-                "energy": d.energy_consumed,
-                "distance": d.total_distance
-            } for d in drones
-        ],
-        "deliveries": [
-            {
-                "id": dp.id,
-                "assigned_to": dp.assigned_to,
-                "delivered": dp.delivered,
-                "pos": dp.pos,
-                "priority": dp.priority
-            } for dp in deliveries
-        ]
-    }
-
-    return jsonify(results)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    print("🌐 Web server başlatılıyor...")
+    print("📍 http://localhost:5000 adresinde erişilebilir")
+    app.run(debug=True, port=5000)
