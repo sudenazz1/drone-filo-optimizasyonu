@@ -1,5 +1,5 @@
 from typing import List, Dict, Set
-from geometry import calculate_distance
+from utils.geometry import calculate_distance
 from models.drone import Drone
 from models.delivery_point import DeliveryPoint
 
