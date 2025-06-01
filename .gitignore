@@ -1,0 +1,10 @@
+# Derlenmiş Python dosyaları
+__pycache__/
+*.pyc
+
+# VSCode ayarları
+.vscode/
+
+# Geçici dosyalar
+*.log
+*.tmp
