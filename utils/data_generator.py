@@ -46,10 +46,10 @@ class DataGenerator:
 
     @staticmethod
     def load_predefined_dataset() -> dict:
-        """HAZIR VERİ SETİ - Gerçekçi test verisi"""
+        """HAZIR VERİ SETİ - Sizin verdiğiniz gerçek veri seti"""
         print("📊 Hazır veri seti yükleniyor...")
         
-        # Hazır drone verisi
+        # SİZİN VERDİĞİNİZ HAZIR VERİ SETİ
         drone_data = [
             {"id": 1, "max_weight": 4.0, "battery": 12000, "speed": 8.0, "start_pos": (10, 10)},
             {"id": 2, "max_weight": 3.5, "battery": 10000, "speed": 10.0, "start_pos": (20, 30)},
@@ -58,48 +58,57 @@ class DataGenerator:
             {"id": 5, "max_weight": 6.0, "battery": 20000, "speed": 5.0, "start_pos": (40, 70)}
         ]
         
-        # Hazır teslimat verisi
         delivery_data = [
-            {"id": 1, "pos": (15, 25), "weight": 1.5, "priority": 3, "time_window": ("09:00", "10:00")},
-            {"id": 2, "pos": (30, 40), "weight": 2.0, "priority": 5, "time_window": ("09:00", "09:30")},
-            {"id": 3, "pos": (70, 80), "weight": 3.0, "priority": 2, "time_window": ("09:20", "10:20")},
-            {"id": 4, "pos": (90, 10), "weight": 1.0, "priority": 4, "time_window": ("09:10", "09:40")},
-            {"id": 5, "pos": (45, 60), "weight": 4.0, "priority": 1, "time_window": ("09:30", "10:30")},
-            {"id": 6, "pos": (25, 15), "weight": 2.5, "priority": 3, "time_window": ("09:00", "09:50")},
-            {"id": 7, "pos": (60, 30), "weight": 1.0, "priority": 5, "time_window": ("09:05", "09:25")},
-            {"id": 8, "pos": (85, 90), "weight": 3.5, "priority": 2, "time_window": ("09:40", "10:40")},
-            {"id": 9, "pos": (10, 80), "weight": 2.0, "priority": 4, "time_window": ("09:15", "09:45")},
-            {"id": 10, "pos": (95, 50), "weight": 1.5, "priority": 3, "time_window": ("09:00", "10:00")},
-            {"id": 11, "pos": (55, 20), "weight": 0.5, "priority": 5, "time_window": ("09:00", "09:20")},
-            {"id": 12, "pos": (35, 75), "weight": 2.0, "priority": 1, "time_window": ("09:50", "11:00")},
-            {"id": 13, "pos": (75, 40), "weight": 3.0, "priority": 3, "time_window": ("09:10", "09:50")},
-            {"id": 14, "pos": (20, 90), "weight": 1.5, "priority": 4, "time_window": ("09:30", "10:10")},
-            {"id": 15, "pos": (65, 65), "weight": 4.5, "priority": 2, "time_window": ("09:25", "10:15")},
-            {"id": 16, "pos": (40, 10), "weight": 2.0, "priority": 5, "time_window": ("09:00", "09:30")},
-            {"id": 17, "pos": (5, 50), "weight": 1.0, "priority": 3, "time_window": ("09:15", "09:55")},
-            {"id": 18, "pos": (50, 85), "weight": 3.0, "priority": 1, "time_window": ("10:00", "11:00")},
-            {"id": 19, "pos": (80, 70), "weight": 2.5, "priority": 4, "time_window": ("09:20", "10:00")},
-            {"id": 20, "pos": (30, 55), "weight": 1.5, "priority": 2, "time_window": ("09:40", "10:20")}
+            {"id": 1, "pos": (15, 25), "weight": 1.5, "priority": 3, "time_window": (0, 60)},
+            {"id": 2, "pos": (30, 40), "weight": 2.0, "priority": 5, "time_window": (0, 30)},
+            {"id": 3, "pos": (70, 80), "weight": 3.0, "priority": 2, "time_window": (20, 80)},
+            {"id": 4, "pos": (90, 10), "weight": 1.0, "priority": 4, "time_window": (10, 40)},
+            {"id": 5, "pos": (45, 60), "weight": 4.0, "priority": 1, "time_window": (30, 90)},
+            {"id": 6, "pos": (25, 15), "weight": 2.5, "priority": 3, "time_window": (0, 50)},
+            {"id": 7, "pos": (60, 30), "weight": 1.0, "priority": 5, "time_window": (5, 25)},
+            {"id": 8, "pos": (85, 90), "weight": 3.5, "priority": 2, "time_window": (40, 100)},
+            {"id": 9, "pos": (10, 80), "weight": 2.0, "priority": 4, "time_window": (15, 45)},
+            {"id": 10, "pos": (95, 50), "weight": 1.5, "priority": 3, "time_window": (0, 60)},
+            {"id": 11, "pos": (55, 20), "weight": 0.5, "priority": 5, "time_window": (0, 20)},
+            {"id": 12, "pos": (35, 75), "weight": 2.0, "priority": 1, "time_window": (50, 120)},
+            {"id": 13, "pos": (75, 40), "weight": 3.0, "priority": 3, "time_window": (10, 50)},
+            {"id": 14, "pos": (20, 90), "weight": 1.5, "priority": 4, "time_window": (30, 70)},
+            {"id": 15, "pos": (65, 65), "weight": 4.5, "priority": 2, "time_window": (25, 75)},
+            {"id": 16, "pos": (40, 10), "weight": 2.0, "priority": 5, "time_window": (0, 30)},
+            {"id": 17, "pos": (5, 50), "weight": 1.0, "priority": 3, "time_window": (15, 55)},
+            {"id": 18, "pos": (50, 85), "weight": 3.0, "priority": 1, "time_window": (60, 100)},
+            {"id": 19, "pos": (80, 70), "weight": 2.5, "priority": 4, "time_window": (20, 60)},
+            {"id": 20, "pos": (30, 55), "weight": 1.5, "priority": 2, "time_window": (40, 80)}
         ]
         
-        # Hazır no-fly zone verisi
         nfz_data = [
             {
                 "id": 1,
                 "coordinates": [(40, 30), (60, 30), (60, 50), (40, 50)],
-                "active_time": ("09:00", "11:00")
+                "active_time": (0, 120)
             },
             {
                 "id": 2,
                 "coordinates": [(70, 10), (90, 10), (90, 30), (70, 30)],
-                "active_time": ("09:30", "10:30")
+                "active_time": (30, 90)
             },
             {
                 "id": 3,
                 "coordinates": [(10, 60), (30, 60), (30, 80), (10, 80)],
-                "active_time": ("09:00", "10:00")
+                "active_time": (0, 60)
             }
         ]
+        
+        # TIME WINDOW DÖNÜŞTÜRME FONKSİYONU
+        def convert_numeric_to_time_string(time_tuple):
+            """Sayısal time_window'u string formatına çevir"""
+            start_minutes, end_minutes = time_tuple
+            start_hour = 9 + (start_minutes // 60)  # 9:00'dan başlayarak
+            start_min = start_minutes % 60
+            end_hour = 9 + (end_minutes // 60)
+            end_min = end_minutes % 60
+            
+            return (f"{start_hour:02d}:{start_min:02d}", f"{end_hour:02d}:{end_min:02d}")
         
         # Drone objelerini oluştur
         drones = []
@@ -113,36 +122,46 @@ class DataGenerator:
             )
             drones.append(drone)
         
-        # Delivery objelerini oluştur
+        # Delivery objelerini oluştur (TIME WINDOW DÜZELTMESİ İLE)
         deliveries = []
         for data in delivery_data:
+            # Sayısal time_window'u string formatına çevir
+            time_window_str = convert_numeric_to_time_string(data["time_window"])
+            
             delivery = DeliveryPoint(
                 id=data["id"] - 1,  # 0-indexed
                 pos=data["pos"],
                 weight=data["weight"],
                 priority=data["priority"],
-                time_window=data["time_window"]
+                time_window=time_window_str  # Düzeltilmiş format
             )
             deliveries.append(delivery)
         
-        # No-fly zone objelerini oluştur
+        # No-fly zone objelerini oluştur (TIME WINDOW DÜZELTMESİ İLE)
         no_fly_zones = []
         for data in nfz_data:
+            # Sayısal active_time'ı string formatına çevir
+            active_time_str = convert_numeric_to_time_string(data["active_time"])
+            
             nfz = NoFlyZone(
                 id=data["id"] - 1,  # 0-indexed
                 coordinates=data["coordinates"],
-                active_time=data["active_time"]
+                active_time=active_time_str  # Düzeltilmiş format
             )
             no_fly_zones.append(nfz)
         
         print(f"✅ Hazır veri seti yüklendi: {len(drones)} drone, {len(deliveries)} teslimat, {len(no_fly_zones)} yasak bölge")
+        print(f"📋 Veri seti detayları:")
+        print(f"   🚁 Dronlar: {len(drones)} adet")
+        print(f"   📦 Teslimatlar: {len(deliveries)} adet") 
+        print(f"   🚫 Yasak bölgeler: {len(no_fly_zones)} adet")
         
         return {
             'drones': drones,
             'deliveries': deliveries,
             'no_fly_zones': no_fly_zones,
-            'scenario_name': 'Predefined Dataset',
-            'description': f'{len(drones)} drones, {len(deliveries)} deliveries with real-world constraints'
+            'scenario_name': 'Predefined Dataset - Your Custom Data',
+            'description': f'{len(drones)} drones, {len(deliveries)} deliveries with your custom constraints'
         }
 
     @staticmethod
@@ -227,3 +246,11 @@ class DataGenerator:
             'scenario_name': 'Mixed Scenario',
             'description': f"{len(predefined['drones'])} drones, {len(all_deliveries)} mixed deliveries"
         }
+
+    @staticmethod 
+    def load_your_custom_dataset() -> dict:
+        """SİZİN ÖZEL VERİ SETİNİZ - Direk kullanım için"""
+        print("🎯 Özel veri setiniz yükleniyor...")
+        
+        # Bu fonksiyon sizin verdiğiniz veri setini direkt kullanır
+        return DataGenerator.load_predefined_dataset()
